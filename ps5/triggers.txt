@@ -1,0 +1,58 @@
+// trigger file - if you've done problem 9 but no stories are popping up, you
+// should edit this file to contain triggers that will fire on current news
+// stories!
+
+// Set up keyword triggers
+// Trigger on 'election' in the title
+TITLEelection,TITLE,election
+
+// Trigger on 'election' in the description
+DESCRIPTIONelection,DESCRIPTION,election
+
+// Trigger on 'debate' in the title
+TITLEdebate,TITLE,debate
+
+// Trigger on 'debate' in the description
+DESCRIPTIONdebate,DESCRIPTION,debate
+
+// Trigger on Trump in title
+TITLEtrump,TITLE,Trump
+
+// Trigger on Trump in description
+DESCRIPTIONtrump,DESCRIPTION,Trump
+
+// Trigger on Clinton in title
+TITLEclinton,TITLE,Clinton
+
+// Trigger on Clinton in description
+DESCRIPTIONclinton,DESCRIPTION,Clinton
+
+// Set up date triggers
+// Debate airs from 2100 - 2230 on 19 October, 2016
+// 3 hours before debate
+BEFOREdebate,AFTER,19 Oct 2016 18:00:00
+
+// 3 hours after debate
+AFTERdebate,BEFORE,20 Oct 2016 01:30:00
+
+// Set up composite triggers
+// Time composite
+// composite trigger named t4
+ANDdebatetime,AND,BEFOREdebate,AFTERdebate
+ADD,ANDdebatetime
+
+// Election Composite
+ORelection,OR,TITLEelection,DESCRIPTIONelection
+ADD,ORelection
+
+// Debate Composite
+ORdebate,OR,TITLEdebate,DESCRIPTIONdebate
+ADD,ORdebate
+
+// Trump Composite
+ORtrump,OR,TITLEtrump,DESCRIPTIONtrump
+ADD,ORtrump
+
+// Clinton Composite
+ORclinton,OR,TITLEclinton,DESCRIPTIONclinton
+ADD,ORclinton
